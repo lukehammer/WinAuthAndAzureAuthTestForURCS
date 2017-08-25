@@ -3,8 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-using System.Data.Entity;
+
 using System.Data;
+using System.Data.Entity;
 using WinAuthAndAzureAuthTestForURCS.Models;
 using WinAuthAndAzureAuthTestForURCS.ViewModels;
 
@@ -60,7 +61,7 @@ namespace WinAuthAndAzureAuthTestForURCS.Controllers
             tempUser.Locked = user.vm_UserAccount.Locked;
             tempUser.UserAccountID = user.vm_UserAccount.UserAccountID;
 
-            db.Entry(tempUser).State = System.Data.EntityState.Modified;
+            db.Entry(tempUser).State = EntityState.Modified;
             db.SaveChanges();
             TempData["Message"] = "User successfully updated";
             return RedirectToAction("Index");

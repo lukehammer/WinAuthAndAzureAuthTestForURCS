@@ -1,18 +1,24 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
-
+using Microsoft.AspNet.Identity;
 using Microsoft.Owin.Security;
 using Microsoft.Owin.Security.Cookies;
 using Microsoft.Owin.Security.OpenIdConnect;
+using WinAuthAndAzureAuthTestForURCS.Models;
 using WinAuthAndAzureAuthTestForURCS.Utils;
 
 namespace WinAuthAndAzureAuthTestForURCS.Controllers
 {
+
+
+
     public class HomeController : Controller
     {
+        
         public ActionResult Index()
         {
             if (Request.IsAuthenticated)
@@ -36,6 +42,8 @@ namespace WinAuthAndAzureAuthTestForURCS.Controllers
                     new AuthenticationProperties { RedirectUri = "/" },
                     OpenIdConnectAuthenticationDefaults.AuthenticationType);
             }
+
+
         }
 
         /// <summary>
@@ -46,6 +54,12 @@ namespace WinAuthAndAzureAuthTestForURCS.Controllers
             HttpContext.GetOwinContext().Authentication.SignOut(
                     OpenIdConnectAuthenticationDefaults.AuthenticationType,
                     CookieAuthenticationDefaults.AuthenticationType);
+        }
+
+        public void Oauth()
+        {
+            
+
         }
     }
 }
